@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<!-- Main Dashboard Content -->
+<div class="main-dashboard-content" th:fragment="tableVehicule">
+  <div class="main-dashboard-content d-flex justify-content-between">
+    <h2><i class="fas fa-car"></i> Véhicules</h2>
+    <!-- Button add vehicule -->
+    <a type="button" class="btn btn-outline-primary " data-toggle="modal" data-target="#addVehiculeModal">
+      <i class="fas fa-plus"></i>
+    </a>
+  </div>
+  <!-- Tableau des véhicules -->
+  <th:block th:if="${#lists.isEmpty(vehicules)}">
+    <div class="alert alert-info mt-4" role="alert">
+      Il n'y a aucun véhicule existant.
+    </div>
+  </th:block>
+  <div class="table-container">
+    <th:block th:unless="${#lists.isEmpty(vehicules)}">
+      <table class="table  table-bordered table-hover">
+        <thead>
+        <tr class="bg-info">
+          <th>Marque</th>
+          <th>Type de véhicule</th>
+          <th>Modèle</th>
+          <th>Matricule</th>
+          <th>Couleur</th>
+          <th>Carburant</th>
+          <th>Disponibilité</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="vehicule : ${vehicules}" >
+          <td th:text="${vehicule.marque}"></td>
+          <td th:text="${vehicule.typeVehicule}"></td>
+          <td th:text="${vehicule.modele}"></td>
+          <td th:text="${vehicule.matricule}"></td>
+          <td class="text-center"><label th:style="'width: 50px; height: 25px; background-color: ' + ${vehicule.couleur}"></label></td>
+          <td th:text="${vehicule.carburant}"></td>
+          <td th:if="${vehicule.disponibilite == true}" style="background-color: limegreen">Disponible</td>
+            <td th:if="${vehicule.disponibilite == false}" style="background-color: indianred;color: white">Non Disponible</td>
+          <td>
+            <!-- button for displaying vehicule details -->
+            <a type="button" class="btn btn-outline-primary" data-toggle="modal"
+               th:data-target="'#viewVehiculeModal ' + ${vehicule.id}" onclick="test()">
+              <i class="fas fa-info-circle"></i>
+            </a>
+            <!-- button for modifying vehicule -->
+            <a type="button" class="btn btn-outline-success" data-toggle="modal"
+               th:data-target="'#modifyVehiculeModal' + ${vehicule.id}"
+               th:data-vehicule-id="${vehicule.id}"
+               th:data-vehicule-marque="${vehicule.marque}"
+               th:data-vehicule-typeVehicule="${vehicule.typeVehicule}"
+               th:data-vehicule-modele="${vehicule.modele}"
+               th:data-vehicule-matricule="${vehicule.matricule}"
+               th:data-vehicule-couleur="${vehicule.couleur}"
+               th:data-vehicule-carburant="${vehicule.carburant}" onclick="fillUpdateFormVehicule(this)">
+              <i class="fas fa-edit"></i>
+            </a>
+            <!-- button for deleting vehicule -->
+            <a type="button" class="btn btn-outline-danger" th:href="@{/Vehicules/delete/{id}(id=${vehicule.id})}"
+               onclick="return confirm('Voulez-vous vraiment supprimer ce véhicule ?')">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </th:block>
+  </div>
+</div>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+
+    <title>User Details</title>
+    <style>
+        .background {
+            background: rgb(119, 108, 217);
+            background: linear-gradient(90deg, rgba(222, 221, 230, 0.712) 15%, rgba(195, 205, 223, 0.5) 35%, rgb(196, 198, 212) 75%);
+        }
+        .bgcontainer {
+            /* background: rgb(119, 108, 217,0.3); */
+            background: linear-gradient(90deg, rgba(128, 121, 219, 0.3) 15%, rgba(69, 113, 199, 0.5) 35%, rgb(130, 134, 196) 75%);
+        }
+
+    </style>
+
+</head>
+
+<body class="background">
+<div id="spinner" class="position-absolute top-50 start-50" role="status">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+<div class="container rounded-3 my-5 bgcontainer  shadow  box">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="
+              d-flex
+              align-items-stretch
+              flex-column
+              h-75
+              <!-- h-50 -->
+              justify-content-center
+              ">
+                <div class="row mt-md-5">
+                    <div class="col text-center">
+                        <img class="rounded-circle mb-3" id="imgload" src="https://cdn-icons-png.flaticon.com/512/219/219986.png" width="175px"
+                             height="175px" alt="" />
+                        <h5 class="myname" th:text="${client.nom}+' '+${client.prenom}">/h5>
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <small>
+                            <p class="idinfo fs-6 text-light" aria-placeholder="Idinfo"></p>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 px-0 mt-md-3">
+            <h2 class="fw-semi-bold my-3 pb-1" id="profileh3">User Profile Details</h2>
+            <div class="container border mt-4 ">
+                <div class="row mt-5 mb-3">
+                    <div class="col">
+                        <label for="id">Date De Naissance</label>
+                        <input class=" w-70 form-control" type="text" name="id" id="id" th:value="${client.dateNaissance}" />
+                    </div>
+                    <div class="col">
+                        <label for="id">Phone</label>
+                        <input class=" w-70 form-control" type="text" name="id" th:value="${client.telephone}"  />
+                    </div>
+                    <div class="col">
+                        <label for="id">Adresse</label>
+                        <input class=" w-70 form-control" type="text" name="id"  th:value="${client.adresse}" />
+                    </div>
+                </div>
+                <div class="container border mt-4 ">
+                    <div class="row mt-5 mb-3">
+                        <div class="col">
+                            <label for="email">Email</label>
+                            <input class=" w-100 form-control shadow" type="text" name="email" id="email" aria-label="Name" th:value="${client.email}" />
+                        </div>
+                        <div class="col">
+                            <label for="id">Password</label>
+                            <input class=" w-70 form-control" type="password" name="id" th:value="${client.password}"  />
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+        </div>
+        <a class="btn btn-outline-dark shadow"  th:href="@{/dashClient/Reservations}" >Back to Dashboard</a>
+
+        <!-- <div class="col-3">dfds</div> -->
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="project.js"></script>
+<script>
+
+    var min = 1;
+    var max = 88;
+    const imgsrc = "";
+    function loadspinner() {
+        $(".box").fadeOut(1000);
+        console.log('fading out')
+        $("#spinner").show();
+        setTimeout(function () {
+            $(".box").fadeIn(1000);
+            $("#spinner").hide();
+            console.log("data loaded Successfully");
+        }, 1000);
+    }
+    $(document).ready(function () {
+        $("#spinner").hide();
+
+        $("button").on("click", function () {
+            const random = Math.floor(Math.random() * (max - min + 1) + min);
+            console.log(random);
+
+            $.get(
+                `https://akabab.github.io/starwars-api/api/id/${random}.json`,
+                function (data) {
+                    console.log(data);
+                    $("#name").val(data["name"]);
+                    $(".myname").text(data["name"]);
+                    $('.idinfo').text(
+                        `https://akabab.github.io/starwars-api/api/id/${random}.json`)
+                    $("#id").val(data["id"]);
+                    $("#gender").val(data["gender"]);
+                    $("#hairColor").val(data["hairColor"]);
+                    $("#eyeColor").val(data["eyeColor"]);
+                    $("#homeworld").val(data["homeworld"]);
+                    $("#height").val(data["height"]);
+                    $("#weight").val(data["mass"]);
+
+                    loadspinner();
+                    $("#imgload").attr("src", data["image"]).fadeIn();
+                }
+            );
+        });
+
+        // Javascript
+    });
+</script>
+</body>
+</html>

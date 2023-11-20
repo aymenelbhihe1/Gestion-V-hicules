@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments/dashboardClient/headerClient :: header">
+</head>
+<body>
+<!-- Navigation Bar -->
+<div th:replace="fragments/dashboardClient/navBarClient :: navBar"></div>
+<!-- Side Bar -->
+<div class="container-fluid mt-4">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-2">
+      <div th:replace="fragments/dashboardClient/sideBarClient :: sideBar"></div>
+    </div>
+    <div class="col-md-10">
+      <!-- Main Content -->
+      <div th:replace="fragments/dashboardClient/FactureClient/tableFactureClient :: mainContent"></div>
+    </div>
+  </div>
+</div>
+<!-- Link to Bootstrap and jQuery scripts -->
+<div th:replace="fragments/dashboardClient/footerClient :: footer"></div>
+</body>
+</html>

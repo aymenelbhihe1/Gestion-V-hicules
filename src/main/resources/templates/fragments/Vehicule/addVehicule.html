@@ -1,0 +1,112 @@
+<!-- Modal for Adding Vehicule -->
+<div class="modal fade" id="addVehiculeModal" tabindex="-1" role="dialog" aria-labelledby="addVehiculeModalLabel" aria-hidden="true"
+     th:fragment="addVehicule">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="addVehiculeModalLabel">Ajouter un véhicule</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulaire d'ajout de véhicule avec Thymeleaf -->
+        <form th:action="@{/Vehicules/save}" th:object="${newVehicule}" method="post">
+          <div class="form-row">
+              <div class="form-group" style="height: 150px; overflow-y: scroll;">
+                <label for="marque">Marque<span style="color: red">*</span></label>
+                <input type="text" id="searchInput" placeholder="Rechercher..." oninput="filterOptions()">
+                <select class="form-control" id="marque" th:field="*{marque}" size="4" required>
+                  <option value="RENAULT">Renault</option>
+                  <option value="PEUGEOT">Peugeot</option>
+                  <option value="CITROEN">Citroën</option>
+                  <option value="MERCEDES">Mercedes</option>
+                  <option value="BMW">BMW</option>
+                  <option value="AUDI">Audi</option>
+                  <option value="VOLKSWAGEN">Volkswagen</option>
+                  <option value="FIAT">Fiat</option>
+                  <option value="OPEL">Opel</option>
+                  <option value="TOYOTA">Toyota</option>
+                  <option value="NISSAN">Nissan</option>
+                  <option value="HYUNDAI">Hyundai</option>
+                  <option value="KIA">Kia</option>
+                  <option value="MAZDA">Mazda</option>
+                  <option value="FORD">Ford</option>
+                  <option value="MINI">Mini</option>
+                  <option value="LAND ROVER">Land Rover</option>
+                  <option value="JEEP">Jeep</option>
+                  <option value="MITSUBISHI">Mitsubishi</option>
+                  <option value="HONDA">Honda</option>
+                  <option value="SUZUKI">Suzuki</option>
+                  <option value="SEAT">Seat</option>
+                  <option value="SKODA">Skoda</option>
+                  <option value="VOLVO">Volvo</option>
+                  <option value="DACIA">Dacia</option>
+                  <option value="ALFA ROMEO">Alfa Romeo</option>
+                  <option value="SMART">Smart</option>
+                  <option value="DS">DS</option>
+                  <option value="SSANGYONG">SsangYong</option>
+                  <option value="CHEVROLET">Chevrolet</option>
+                  <option value="SUBARU">Subaru</option>
+                  <option value="TESLA">Tesla</option>
+                  <option value="INFINITI">Infiniti</option>
+                  <option value="PORSCHE">Porsche</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="typeVehicule">Type de véhicule<span style="color: red">*</span></label>
+                <select class="form-control" id="typeVehicule" th:field="*{typeVehicule}" required>
+                  <option value="CAMION">Camion</option>
+                    <option value="VOITURE">Voiture</option>
+                </select>
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group">
+                <label for="modele">Modèle<span style="color: red">*</span></label>
+                <input type="number" class="form-control" id="modele" th:field="*{modele}" placeholder="Modèle du véhicule" min="1990" max="Date.now().getFullYear()" required>
+              </div>
+              <div class="form-group">
+                <label for="matricule">Matricule<span style="color: red">*</span></label>
+                <input type="text" class="form-control" id="matricule" th:field="*{matricule}" placeholder="Matricule du véhicule" required>
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group">
+                <label for="couleur">Couleur<span style="color: red">*</span></label>
+                <select class="form-control" id="couleur" th:field="*{couleur}" required>
+                  <option value="white">Blanc</option>
+                    <option value="black">Noir</option>
+                    <option value="red">Rouge</option>
+                    <option value="blue">Bleu</option>
+                    <option value="green">Vert</option>
+                    <option value="yellow">Jaune</option>
+                    <option value="orange">Orange</option>
+                    <option value="purple">Violet</option>
+                    <option value="brown">Marron</option>
+                    <option value="grey">Gris</option>
+                    <option value="pink">Rose</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="carburant">Carburant<span style="color: red">*</span></label>
+                <select class="form-control" id="carburant" th:field="*{carburant}" required>
+                  <option value="Essence">Essence</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Gaz">Gaz</option>
+                </select>
+              </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+      </div>
+      </form>
+      <!-- Fin du formulaire d'ajout de véhicule -->
+    </div>
+  </div>
+</div>
+</div>
+
+
+

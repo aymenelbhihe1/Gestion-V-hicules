@@ -1,0 +1,19 @@
+body{
+    background-image: url("../image/BackLogin.png") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.div1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.center{
+    background-color: black;
+    width: 40%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid white;
+}

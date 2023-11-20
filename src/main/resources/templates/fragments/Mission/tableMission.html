@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<!-- Main Dashboard Content -->
+<div class="main-dashboard-content" th:fragment="mainContent">
+  <div class="main-dashboard-content d-flex justify-content-between">
+    <h2><i class="fa-solid fa-list-check" style="color: #000000;"></i> Missions</h2>
+  </div>
+  <!-- Tableau des clients -->
+  <th:block th:if="${#lists.isEmpty(missions)}">
+    <div class="alert alert-info mt-4" role="alert">
+      Il n'y a aucun mission existant .
+    </div>
+  </th:block>
+  <div class="table-container">
+    <th:block th:unless="${#lists.isEmpty(missions)}">
+      <table class="table  table-bordered table-hover">
+        <thead>
+        <tr class="bg-info">
+         <th>Nom Mission</th>
+          <th>Prix/Km</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="mission : ${missions}" >
+          <td th:text="${mission.nomMission}"></td>
+          <td th:text="${mission.prixKm}+' DH'"></td>
+          <td>
+            <!-- button for modifying client -->
+            <a type="button" class="btn btn-outline-success" >
+              <i class="fas fa-edit"></i>
+            </a>
+            <!-- button for deleting client -->
+            <a type="button" class="btn btn-outline-danger">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+        </tbody>
+      </table>
+    </th:block>
+  </div>
+</div>
+
+</html>

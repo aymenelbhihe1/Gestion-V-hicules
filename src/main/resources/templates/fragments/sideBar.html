@@ -1,0 +1,44 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="sideBar">
+    <!-- Sidebar -->
+    <ul class="list-group">
+        <li class="list-group-item" style="background-color:#1f5cc7;color:white;cursor: none">
+            <i class='bx bxs-dashboard' style="margin-right: 5px;"></i>Dashboard Admin
+        </li>
+      <li class="list-group-item"><a class="sidebar-link" th:href="@{/}">
+        <i class="fas fa-home"></i>Accueil</a>
+      </li>
+        <li class="list-group-item"><a class="sidebar-link" th:href="@{/dashAdmin/Statisques}">
+            <i class="fa-solid fa-chart-pie"></i>Statistiques</a>
+        </li>
+        <li class="list-group-item"><a class="sidebar-link" th:href="@{/Clients}">
+            <i class="fas fa-users"></i>Clients</a>
+        </li>
+      <li class="list-group-item"><a class="sidebar-link" th:href="@{/Vehicules}">
+        <i class="fas fa-car"></i>Véhicules</a>
+      </li>
+      <li class="list-group-item"><a class="sidebar-link" th:href="@{/Reservations}">
+        <i class="fas fa-calendar-alt"></i>Réservations</a>
+      </li>
+        <li class="list-group-item"><a class="sidebar-link" th:href="@{/Elements/ListMissions}">
+            <i class="fa-solid fa-list-check" style="color: #000000;"></i>Missions</a>
+        </li>
+        <li class="list-group-item"><a class="sidebar-link" th:href="@{/Elements/ListAgences}">
+            <i class="fa-solid fa-building" style="color: #000000;"></i>Agences</a>
+        </li>
+        <li class="list-group-item"><a class="sidebar-link" th:href="@{/Elements/ListFactures}">
+            <i class="fa-solid fa-file-invoice-dollar" style="color: #000000;"></i>Factures</a>
+        </li>
+        <li class="list-group-item reserv" style="background-color: #1a2c79"><a class="sidebar-link " style="color: white"  th:href="@{/CreationReserv/addReserv}">
+            <i class="fa-solid fa-plus" style="color: #000000;"></i>Réserver</a>
+        </li>
+        <li class="list-group-item1" style="color: white;background-color: white">
+        </li>
+        <li class="list-group-item deco" ><a class="btn btn-danger" th:href="@{/login}">
+            <i class="fas fa-sign-out-alt mr-2"></i>Déconnecter
+        </a>
+        </li>
+    </ul>
+    <!-- Button for Déconnecter -->
+  </div>
+</html>

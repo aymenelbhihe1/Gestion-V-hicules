@@ -1,0 +1,37 @@
+<!-- Modal for Displaying Client Details -->
+<div th:each="client : ${clients}" class="modal fade" th:id="'viewClientModal' + ${client.id}" tabindex="-1" role="dialog"
+     th:attr="aria-labelledby='viewClientModalLabel' + ${client.id}"
+     th:data-target="'#viewClientModal' + ${client.id}" th:fragment="infosClient">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" th:id="'viewClientModalLabel' + ${client.id}">Détails du client</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Display Client Details -->
+        <dl class="row">
+          <dt class="col-sm-5">Nom :</dt>
+          <dd class="col-sm-7" th:text="${client.nom}"></dd>
+          <dt class="col-sm-5">Prénom :</dt>
+          <dd class="col-sm-7" th:text="${client.prenom}"></dd>
+          <dt class="col-sm-5">Date de Naissance :</dt>
+          <dd class="col-sm-7" th:text="${#dates.format(client.dateNaissance, 'dd/MM/yyyy')}"></dd>
+          <dt class="col-sm-5">Adresse :</dt>
+          <dd class="col-sm-7" th:text="${client.adresse}"></dd>
+          <dt class="col-sm-5">Téléphone :</dt>
+          <dd class="col-sm-7" th:text="${client.telephone}"></dd>
+          <dt class="col-sm-5">Sexe :</dt>
+          <dd class="col-sm-7" th:text="${client.sexe}"></dd>
+          <dt class="col-sm-5">Email :</dt>
+          <dd class="col-sm-7" th:text="${client.email}"></dd>
+        </dl>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<!-- Modal for Displaying Vehicule Details -->
+<div th:each="vehicule : ${vehicules}" class="modal fade" th:id="'viewVehiculeModal' + ${vehicule.id}" tabindex="-1" role="dialog"
+     th:attr="aria-labelledby='viewVehiculeModalLabel' + ${vehicule.id}"
+     th:data-target="'#viewVehiculeModal ' + ${vehicule.id}" th:fragment="infosVehicule">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" th:id="'viewVehiculeModalLabel' + ${vehicule.id}">Détails du véhicule</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Display Vehicule Details -->
+        <dl class="row">
+          <dt class="col-sm-5">Marque :</dt>
+          <dd class="col-sm-7" th:text="${vehicule.marque}"></dd>
+          <dt class="col-sm-5">Type de Véhicule :</dt>
+          <dd class="col-sm-7" th:text="${vehicule.typeVehicule}"></dd>
+          <dt class="col-sm-5">Modèle :</dt>
+          <dd class="col-sm-7" th:text="${vehicule.modele}"></dd>
+          <dt class="col-sm-5">Matricule :</dt>
+          <dd class="col-sm-7" th:text="${vehicule.matricule}"></dd>
+          <dt class="col-sm-5">Couleur :</dt>
+          <dd class="col-sm-7" ><span th:style="'width: 50px; height: 10px; background-color: ' + ${vehicule.couleur}">255</span></dd>
+          <dt class="col-sm-5">Carburant :</dt>
+          <dd class="col-sm-7" th:text="${vehicule.carburant}"></dd>
+        </dl>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

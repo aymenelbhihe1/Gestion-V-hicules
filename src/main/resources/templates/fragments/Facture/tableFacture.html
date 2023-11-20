@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<!-- Main Dashboard Content -->
+<div class="main-dashboard-content" th:fragment="mainContent">
+  <div class="main-dashboard-content d-flex justify-content-between">
+    <h2><i class="fa-solid fa-file-invoice-dollar" style="color: #000000;"></i> Factures</h2>
+  </div>
+  <!-- Tableau des clients -->
+  <th:block th:if="${#lists.isEmpty(factures)}">
+    <div class="alert alert-info mt-4" role="alert">
+      Il n'y a aucune facture existant .
+    </div>
+  </th:block>
+  <div class="table-container">
+    <th:block th:unless="${#lists.isEmpty(factures)}">
+      <table class="table  table-bordered table-hover">
+        <thead>
+        <tr class="bg-info">
+          <th>Date Facture</th>
+          <th>Client</th>
+          <th>Montant</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="facture : ${factures}" >
+            <td th:text="${facture.dateFacture}"></td>
+<!--          faire une condition if client == null-->
+          <td th:if="${facture.reservation.client == null}" th:text="-"></td>
+            <td th:if="${facture.reservation.client != null}" th:text="${facture.reservation.client.nom}+' '+${facture.reservation.client.prenom}"></td>
+            <td th:text="${facture.montantTotal}+' DH'"></td>
+          <td>
+            <!-- button for modifying client -->
+            <a type="button" class="btn btn-outline-success" >
+              <i class="fas fa-edit"></i>
+            </a>
+            <!-- button for deleting client -->
+            <a type="button" class="btn btn-outline-danger" th:href="@{/Elements/deleteFacture/{id}(id=${facture.id})}"
+               onclick="return confirm('Voulez-vous vraiment supprimer cette facture ?')">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+        </tbody>
+      </table>
+    </th:block>
+  </div>
+</div>
+
+</html>

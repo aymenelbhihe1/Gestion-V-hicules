@@ -1,0 +1,45 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="dashContent">
+  <div class="home-content">
+    <div class="overview-boxes">
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic"></div>
+          <div class="number" th:text="${sommeKm}+' Km'"></div>
+          <div class="indicator">
+            <i class='bx bxs-map-alt' style="margin-right: 5px;"></i>
+            <span class="text">Kilometrages</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic"> </div>
+          <div class="number" th:text="${sommePrix}+' Dhs'"></div>
+          <div class="indicator">
+            <i class='bx bxs-wallet' style="margin-right: 5px;"></i>
+            <span class="text">Argents</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic"></div>
+          <div class="number" th:text="${sommeDuree}+' Days'"></div>
+          <div class="indicator">
+            <i class='bx bxs-timer' style="margin-right: 5px;"></i>
+            <span class="text">Rent Time</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="map-container-google-3" class="z-depth-1-half map-container-3">
+    <iframe src="https://maps.google.com/maps?q=EMSI+Agdal+2&t=k&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+            style="border:0px;" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+</html>

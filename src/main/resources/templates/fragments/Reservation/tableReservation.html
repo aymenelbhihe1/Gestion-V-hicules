@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<!-- Main Dashboard Content -->
+<div class="main-dashboard-content" th:fragment="mainContent">
+  <div class="main-dashboard-content d-flex justify-content-between">
+    <h2> <i class="fas fa-calendar-alt"></i> Réservations</h2>
+  </div>
+  <!-- Tableau des réservations -->
+  <th:block th:if="${#lists.isEmpty(reservations)}">
+    <div class="alert alert-info mt-4" role="alert">
+      Il n'y a aucune réservation existante.
+    </div>
+  </th:block>
+  <div class="table-container">
+    <th:block th:unless="${#lists.isEmpty(reservations)}">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr class="bg-info">
+          <th>Date de Réservation</th>
+          <th>Mission</th>
+          <th>Véhicule</th>
+          <th>Client</th>
+          <th>État</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reservation : ${reservations}">
+          <td th:text="${reservation.dateReservation}"></td>
+<!--          condition si Mission == NULL affiche '-'-->
+            <td th:if="${reservation.mission == null}" th:text="'-'"></td>
+<!--          condition si Mission != NULL affiche Mission-->
+            <td th:if="${reservation.mission != null}" th:text="${reservation.mission.nomMission}"></td>
+<!--          condition si Vehicule == NULL affiche '-'-->
+            <td th:if="${reservation.vehicule == null}" th:text="'-'"></td>
+<!--          condition si Vehicule != NULL affiche Vehicule-->
+          <td th:if="${reservation.vehicule != null}" th:text="${reservation.vehicule.marque}+' - '+ ${reservation.vehicule.modele}"></td>
+<!--          condition si Client == NULL affiche '-'-->
+            <td th:if="${reservation.client == null}" th:text="'-'"></td>
+<!--          condition si Client != NULL affiche Client-->
+            <td th:if="${reservation.client != null}" th:text="${reservation.client.nom}+' '+ ${reservation.client.prenom}"></td>
+          <td th:if="${#strings.equals(reservation.etat, 'En_Attente')}" style="background-color: grey" th:text="${reservation.etat}"></td>
+          <td th:if="${#strings.equals(reservation.etat, 'Acceptée')}" style="background-color: limegreen;color: black" th:text="${reservation.etat}"></td>
+          <td th:if="${#strings.equals(reservation.etat, 'Refusée')}" style="background-color: indianred;color: black" th:text="${reservation.etat}"></td>
+          <td>
+            <!-- button for modifying reservation -->
+            <a type="button" class="btn btn-outline-success" data-toggle="modal"
+               th:data-target="'#modifyReservationModal' + ${reservation.id}" th:data-reservation-id="${reservation.id}">
+              <i class="fas fa-edit"></i>
+            </a>
+            <!-- button for deleting reservation -->
+            <a type="button" class="btn btn-outline-danger" th:href="@{/Reservations/delete/{id}(id=${reservation.id})}"
+               onclick="return confirm('Voulez-vous vraiment supprimer cette Reservation ?')">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </th:block>
+  </div>
+</div>

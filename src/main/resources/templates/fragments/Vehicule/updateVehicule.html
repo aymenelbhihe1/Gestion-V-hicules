@@ -1,0 +1,86 @@
+<!-- Modal for Modifying Vehicule -->
+<div th:each="vehicule : ${vehicules}" th:fragment="updateVehicule">
+    <div class="modal fade" th:id="'modifyVehiculeModal' + ${vehicule.id}" tabindex="-1" role="dialog"
+         th:attr="aria-labelledby='modifyVehiculeModalLabel' + ${vehicule.id}"
+         th:data-target="'#modifyVehiculeModal' + ${vehicule.id}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" th:id="'modifyVehiculeModalLabel' + ${vehicule.id}">Modifier un véhicule</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form for modifying vehicule with Thymeleaf -->
+                    <form id="updateForm" th:action="@{/Vehicules/update/{id}(id=${vehicule.id})}" th:object="${updateVehicule}" method="post">
+                        <input type="hidden" th:field="*{id}" id="idV" />
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="marque_">Marque</label>
+                                <input type="text" class="form-control" id="marque_" th:field="*{marque}"
+                                       placeholder="Marque du véhicule" >
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="typeVehicule_">Type de Véhicule</label>
+                                <input type="text" class="form-control" id="typeVehicule_" th:field="*{typeVehicule}"
+                                       placeholder="Type de véhicule" >
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="modele_">Modèle</label>
+                                <input type="text" class="form-control" id="modele_" th:field="*{modele}"
+                                       placeholder="Modèle du véhicule" >
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="matricule_">Matricule</label>
+                                <input type="text" class="form-control" id="matricule_" th:field="*{matricule}"
+                                       placeholder="Matricule du véhicule" >
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="couleur_">Couleur</label>
+                                    <select class="form-control" id="couleur_" th:field="*{couleur}" required>
+                                        <option value="white">Blanc</option>
+                                        <option value="black">Noir</option>
+                                        <option value="red">Rouge</option>
+                                        <option value="blue">Bleu</option>
+                                        <option value="green">Vert</option>
+                                        <option value="yellow">Jaune</option>
+                                        <option value="orange">Orange</option>
+                                        <option value="purple">Violet</option>
+                                        <option value="brown">Marron</option>
+                                        <option value="grey">Gris</option>
+                                        <option value="pink">Rose</option>
+                                    </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="carburant_">Carburant</label>
+                                <select id="carburant_" class="form-control" th:field="*{carburant}">
+                                    <option value="Essence">Essence</option>
+                                    <option value="Diesel">Diesel</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="disponibilite_">Disponibilité</label>
+                                <select id="disponibilite_" class="form-control" th:field="*{disponibilite}">
+                                    <option value="true">Disponible</option>
+                                    <option value="false">Non Disponible</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        </div>
+                    </form>
+                    <!-- End of form for modifying vehicule -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

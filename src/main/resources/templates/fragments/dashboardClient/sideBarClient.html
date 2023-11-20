@@ -1,0 +1,47 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="sideBar">
+    <!-- Sidebar -->
+    <ul class="list-group">
+        <li class="list-group-item" style="background-color:#1f5cc7;color:white">
+            <i class='bx bxs-dashboard' style="margin-right: 5px;"></i>Dashboard Client
+        </li>
+        <li class="list-group-item"><a class="sidebar-link" th:href="@{/dashClient/Statistiques}">
+            <i class="fa-solid fa-chart-pie"></i>Statistiques</a>
+        </li>
+        <li class="list-group-item"><a class="sidebar-link" th:href="@{/dashClient/Reservations}">
+            <i class="fas fa-calendar-alt"></i>Réservations</a>
+        </li>
+        </li>
+        <li class="list-group-item"><a class="sidebar-link" th:href="@{/dashClient/Factures}">
+            <i class="fa-solid fa-file-invoice-dollar" style="color: #000000;"></i>Factures</a>
+        </li>
+        <li class="list-group-item1" style="color: white;background-color: white">
+        </li>
+        <li class="list-group-item1" style="color: white;background-color: white">
+        </li>
+        <li class="list-group-item1" style="color: white;background-color: white">
+        </li>
+        <li class="list-group-item1" style="color: white;background-color: white">
+        </li>
+        <li class="list-group-item1" style="color: white;background-color: white">
+        </li>
+        <li class="list-group-item reserv" style="background-color: #1a2c79"><a class="sidebar-link " style="color: white"  th:href="@{/dashClient/addReservation}">
+            <i class="fa-solid fa-plus" style="color: #000000;"></i>Réserver</a>
+        </li>
+        <li class="list-group-item1" style="color: white;background-color: white">
+        </li>
+        <li class="list-group-item"><a class="sidebar-link" th:href="@{/dashClient/contact}">
+            <i class="fa-solid fa-headset" style="color: #000000;"></i>Support</a>
+        </li>
+        <li class="list-group-item"><a class="sidebar-link" th:href="@{/dashClient/infos}">
+            <i class="fa-solid fa-gear" style="color: #000000;"></i>Mon Compte</a>
+        </li>
+        <li class="list-group-item1" style="color: white;background-color: white">
+        </li>
+        <li class="list-group-item deco" ><a class="btn btn-danger" th:href="@{/login}">
+            <i class="fas fa-sign-out-alt mr-2"></i>Déconnecter
+        </a>
+        </li>
+    </ul>
+</div>
+</html>

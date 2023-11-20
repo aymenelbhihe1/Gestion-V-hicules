@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments/header :: header">
+</head>
+<body>
+<!-- Navigation Bar -->
+<div th:replace="fragments/navBar :: navBar"></div>
+<!-- Side Bar -->
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            <div th:replace="fragments/sideBar :: sideBar"></div>
+        </div>
+        <div class="col-md-10">
+            <!-- Main Content -->
+            <div>
+                <div class="main-dashboard-content" >
+                    <div class="main-dashboard-content d-flex justify-content-between">
+                        <h2><i class="fa-solid fa-building" style="color: #000000;"></i> Agences</h2>
+                    </div>
+                    <div class="table-container">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr class="bg-info">
+                                <th>Nom </th>
+                                <th>Adresse</th>
+                                <th>Telephone</th>
+                                <th>Mail</th>
+                                <th>Heure d'ouverture</th>
+                                <th>Heure de fermeture</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Agence 1</td>
+                                <td>Rabat</td>
+                                <td>+212 6 25 85 41 25</td>
+                                <td>agence_rabat@gmail.com</td>
+                                <td>07:00</td>
+                                <td>16:00</td>
+                                <td>
+                                    <!-- button for modifying reservation -->
+                                    <a type="button" class="btn btn-outline-success">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <!-- button for deleting reservation -->
+                                    <a type="button" class="btn btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Agence 2</td>
+                                <td>Casablanca</td>
+                                <td>+212 6 25 85 41 25</td>
+                                <td>agence_casablanca@gmail.com</td>
+                                <td>05:00</td>
+                                <td>11:00</td>
+                                <td>
+                                    <!-- button for modifying reservation -->
+                                    <a type="button" class="btn btn-outline-success">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <!-- button for deleting reservation -->
+                                    <a type="button" class="btn btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Agence 3</td>
+                                <td>Tanger</td>
+                                <td>+212 6 25 85 41 25</td>
+                                <td>agence_tanger@gmail.com</td>
+                                <td>14:00</td>
+                                <td>18:00</td>
+                                <td>
+                                    <!-- button for modifying reservation -->
+                                    <a type="button" class="btn btn-outline-success">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <!-- button for deleting reservation -->
+                                    <a type="button" class="btn btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Agence 4</td>
+                                <td>Agadir</td>
+                                <td>+212 6 02 03 41 25</td>
+                                <td>agence_agadir@gmail.com</td>
+                                <td> 8:00</td>
+                                <td>18:00</td>
+                                <td>
+                                    <!-- button for modifying reservation -->
+                                    <a type="button" class="btn btn-outline-success">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <!-- button for deleting reservation -->
+                                    <a type="button" class="btn btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Agence 5</td>
+                                <td>Marrakech</td>
+                                <td>+212 6 25 01 02 25</td>
+                                <td>agence_marrakech@gmail.com</td>
+                                <td>9:00</td>
+                                <td>19:00</td>
+                                <td>
+                                    <!-- button for modifying reservation -->
+                                    <a type="button" class="btn btn-outline-success">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <!-- button for deleting reservation -->
+                                    <a type="button" class="btn btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Agence 6</td>
+                                <td>Fes</td>
+                                <td>+212 5 20 25 41 25</td>
+                                <td>agence_fes@gmail.com</td>
+                                <td>4:00</td>
+                                <td>12:00</td>
+                                <td>
+                                    <!-- button for modifying reservation -->
+                                    <a type="button" class="btn btn-outline-success">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <!-- button for deleting reservation -->
+                                    <a type="button" class="btn btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Agence 7</td>
+                                <td>El Jadida</td>
+                                <td>+212 5 25 85 15 00</td>
+                                <td>agence_eljadida@gmail.com</td>
+                                <td>14:00</td>
+                                <td>20:00</td>
+                                <td>
+                                    <!-- button for modifying reservation -->
+                                    <a type="button" class="btn btn-outline-success">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <!-- button for deleting reservation -->
+                                    <a type="button" class="btn btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div th:replace="fragments/Reservation/addReservation :: addReservation"></div>-->
+<!--<div th:replace="fragments/Reservation/updateReservation :: updateReservation"></div>-->
+<!--<div th:replace="fragments/Reservation/infosReservation :: infosReservation"></div>-->
+<!-- Link to Bootstrap and jQuery scripts -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

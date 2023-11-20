@@ -1,0 +1,68 @@
+<!-- Modal for Modifying Client -->
+<div th:each="client : ${clients}" th:fragment="updateClient">
+  <div class="modal fade" th:id="'modifyClientModal' + ${client.id}" tabindex="-1" role="dialog"
+       th:attr="aria-labelledby='modifyClientModalLabel' + ${client.id}"
+       th:data-target="'#modifyClientModal' + ${client.id}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" th:id="'modifyClientModalLabel' + ${client.id}">Modifier un client</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Form for modifying client with Thymeleaf -->
+          <form id="updateForm" th:action="@{/Clients/update/{id}(id=${client.id})}" th:object="${updateClient}" method="post">
+            <input type="hidden" th:field="*{id}" id="idC" />
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="nom_">Nom </label>
+                <input type="text" class="form-control" id="nom_" th:field="*{nom}"
+                        placeholder="Nom du client"  >
+              </div>
+              <div class="form-group col-md-6">
+                <label for="prenom_">Prénom </label>
+                <input type="text" class="form-control " id="prenom_" th:field="*{prenom}"
+                        placeholder="Prénom du client" >
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="dateNaissance_">Date de Naissance </label>
+                <input type="date" class="form-control" id="dateNaissance_" th:field="*{dateNaissance}"
+                        placeholder="Date de Naissance" >
+              </div>
+              <div class="form-group col-md-6">
+                <label for="adresse_">Adresse </label>
+                <input type="text" class="form-control" id="adresse_" th:field="*{adresse}"
+                        placeholder="Adresse"  >
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="telephone_">Téléphone </label>
+                <input type="text" class="form-control" id="telephone_" th:field="*{telephone}"
+                        placeholder="Téléphone"  >
+              </div>
+              <div class="form-group col-md-6">
+                <label for="sexe_">Sexe </label>
+                <select class="form-control" id="sexe_" th:field="*{sexe}" >
+                  <option value="HOMME" th:selected="${client.sexe == 'HOMME'}">Homme</option>
+                  <option value="FEMME" th:selected="${client.sexe == 'FEMME'}">Femme</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+              <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </div>
+          </form>
+          <!-- End of form for modifying client -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

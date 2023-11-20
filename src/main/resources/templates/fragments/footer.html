@@ -1,0 +1,66 @@
+<!-- footer.html -->
+<div th:fragment="footer">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script th:inline="javascript">
+            // Client :
+            function fillUpdateFormClient(button) {
+                var id = button.getAttribute("data-client-id");
+                var nom = button.getAttribute("data-client-nom");
+                var prenom = button.getAttribute("data-client-prenom");
+                var dateNaissance = button.getAttribute("data-client-dateNaissance");
+                var adresse = button.getAttribute("data-client-adresse");
+                var telephone = button.getAttribute("data-client-telephone");
+                var sexe = button.getAttribute("data-client-sexe");
+                console.log(id+"|" +nom+"|" +prenom+"|" +dateNaissance+"|" +adresse+"|" +telephone+"|" +sexe);
+
+                document.getElementById("idC").value = id;
+                document.getElementById("nom_").value = nom;
+                document.getElementById("prenom_").value = prenom;
+                document.getElementById("dateNaissance_").value = dateNaissance;
+                document.getElementById("adresse_").value = adresse;
+                document.getElementById("telephone_").value = telephone;
+                document.getElementById("sexe_").value = sexe;
+            }
+            // Vehicle :
+                function fillUpdateFormVehicule(button) {
+                var id = button.getAttribute('data-vehicule-id');
+                var marque = button.getAttribute('data-vehicule-marque');
+                var typeVehicule = button.getAttribute('data-vehicule-typeVehicule');
+                var modele = button.getAttribute('data-vehicule-modele');
+                var matricule = button.getAttribute('data-vehicule-matricule');
+                var couleur = button.getAttribute('data-vehicule-couleur');
+                var carburant = button.getAttribute('data-vehicule-carburant');
+
+                // Utilisez les valeurs récupérées pour pré-remplir le formulaire de mise à jour
+                    console.log("From button : ")
+                console.log(id+"|" +marque+"|" +typeVehicule+"|" +modele+"|" +matricule+"|" +couleur+"|" +carburant);
+                // Exemple : affecter les valeurs aux champs du formulaire (assurez-vous d'avoir les ID corrects)
+                var elementId =document.getElementById("idV").value = id;
+                var elementMarque =document.getElementById("marque_").value = marque;
+                var elementTypeVehicule =document.getElementById("typeVehicule_").value = typeVehicule;
+                var elementModele =document.getElementById("modele_").value = modele;
+                var elementMatricule =document.getElementById("matricule_").value = matricule;
+                var elementCouleur =document.getElementById("couleur_").value = couleur;
+                var elementCarburant =document.getElementById("carburant_").value = carburant;
+            }
+            function filterOptions() {
+                    var input, filter, select, options, i, optionText;
+                    input = document.getElementById("searchInput");
+                    filter = input.value.toUpperCase();
+                    select = document.getElementById("marque");
+                    options = select.getElementsByTagName("option");
+
+                    for (i = 0; i < options.length; i++) {
+                            optionText = options[i].textContent || options[i].innerText;
+                            if (optionText.toUpperCase().indexOf(filter) > -1) {
+                                    options[i].style.display = "";
+                            } else {
+                                    options[i].style.display = "none";
+                            }
+                    }
+            }
+        </script>
+</div>

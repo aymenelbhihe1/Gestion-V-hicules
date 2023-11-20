@@ -1,0 +1,57 @@
+<!-- Modal for Adding Client -->
+<div class="modal fade" id="addClientModal" tabindex="-1" role="dialog" aria-labelledby="addClientModalLabel" aria-hidden="true"
+     th:fragment="addClient">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="addClientModalLabel">Ajouter un client</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulaire d'ajout de client avec Thymeleaf -->
+                <form th:action="@{/Clients/save}" th:object="${newClient}" method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nom">Nom<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="nom" th:field="*{nom}" placeholder="Nom du client" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="prenom">Prénom<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="prenom" th:field="*{prenom}" placeholder="Prénom du client" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="dateNaissance">Date de Naissance<span style="color: red">*</span></label>
+                            <input type="date" class="form-control" id="dateNaissance" th:field="*{dateNaissance}" placeholder="Date de Naissance" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="adresse">Adresse<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="adresse" th:field="*{adresse}" placeholder="Adresse" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="telephone">Téléphone<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="telephone" th:field="*{telephone}" placeholder="Téléphone" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="sexe">Sexe<span style="color: red">*</span></label>
+                            <select class="form-control" id="sexe" th:field="*{sexe}" required>
+                                <option value="HOMME">Homme</option>
+                                <option value="FEMME">Femme</option>
+                            </select>
+                        </div>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                </div>
+            </form>
+            </div>
+            <!-- Fin du formulaire d'ajout de client -->
+        </div>
+    </div>
+</div>
